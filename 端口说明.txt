@@ -1,0 +1,3 @@
+eureka 注册服务
+     d-eureka-server --- 8001
+     d-eureka-clinet --- 8002
