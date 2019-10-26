@@ -9,10 +9,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8001/eureka/
-    # ±íÊ¾ÊÇ·ñ´ÓEureka Server»ñÈ¡×¢²áĞÅÏ¢
+    # è¡¨ç¤ºæ˜¯å¦ä»Eureka Serverè·å–æ³¨å†Œä¿¡æ¯
     fetch-registry: true
   instance:
-    #±êÊ¶eureka client ¸ø·şÎñ¶Ë·¢ËÍĞÅÏ¢µÄÆµÂÊ 10s
+    #æ ‡è¯†eureka client ç»™æœåŠ¡ç«¯å‘é€ä¿¡æ¯çš„é¢‘ç‡ 10s
     lease-renewal-interval-in-seconds: 10
-    #eureka server ÔÚ30s ºó£¬Ã»ÓĞÊÕµ½ clientĞÅÏ¢µÄĞÄÌø,Ôò½«×¢²áµÄ¿Í»§¶ËÒÆ³ı
+    #eureka server åœ¨30s åï¼Œæ²¡æœ‰æ”¶åˆ° clientä¿¡æ¯çš„å¿ƒè·³,åˆ™å°†æ³¨å†Œçš„å®¢æˆ·ç«¯ç§»é™¤
     lease-expiration-duration-in-seconds: 30
