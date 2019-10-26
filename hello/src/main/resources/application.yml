@@ -16,3 +16,8 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     #eureka server 在30s 后，没有收到 client信息的心跳,则将注册的客户端移除
     lease-expiration-duration-in-seconds: 30
+
+#@FeignClient 全局Fallback开启
+feign:
+  hystrix:
+    enabled: true
