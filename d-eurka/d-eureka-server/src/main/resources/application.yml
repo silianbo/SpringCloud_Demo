@@ -1,0 +1,23 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: d-eureka-server
+
+eureka:
+  instance:
+    hostname: localhost
+    status-page-url:
+
+  server:
+    #关闭自我保护机制
+    enable-self-preservation: false
+    #清理无效节点 4s
+    eviction-interval-timer-in-ms: 4000
+
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
