@@ -10,5 +10,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8001/eureka/
   instance:
+    #标识eureka client 给服务端发送信息的频率 10s
     lease-renewal-interval-in-seconds: 10
+    #eureka server 在30s 后，没有收到 client信息的心跳,则将注册的客户端移除
     lease-expiration-duration-in-seconds: 30
