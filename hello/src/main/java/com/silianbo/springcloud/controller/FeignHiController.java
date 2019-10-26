@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * http://localhost:8080/s?username=silianob
+ * http://localhost:8080/find/s?username=silianob
  */
 @RestController
 public class FeignHiController {
@@ -21,7 +22,7 @@ public class FeignHiController {
     @GetMapping("/find/s")
     String findService(String username) {
         try {
-            return "find" + findService.helloService(username);
+            return "Find " + findService.helloService(username);
         } catch (Exception e) {
             e.printStackTrace();
         }
