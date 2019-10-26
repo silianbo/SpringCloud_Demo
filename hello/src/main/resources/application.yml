@@ -3,12 +3,14 @@ server:
 
 spring:
   application:
-    name: hello word
+    name: hello
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8001/eureka/
+    # 表示是否从Eureka Server获取注册信息
+    fetch-registry: true
   instance:
     #标识eureka client 给服务端发送信息的频率 10s
     lease-renewal-interval-in-seconds: 10
