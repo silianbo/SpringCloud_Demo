@@ -1,6 +1,6 @@
 package com.silianbo.springcloud.controller;
 
-import com.silianbo.springcloud.service.FindService;
+import com.silianbo.springcloud.provider.FindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

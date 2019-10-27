@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients("com.silianbo.springcloud.service")
+@EnableFeignClients
 public class HelloApplication {
     private static final Logger logger = LoggerFactory.getLogger(HelloApplication.class);
 

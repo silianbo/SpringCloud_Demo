@@ -1,5 +1,6 @@
-package com.silianbo.springcloud.service;
+package com.silianbo.springcloud.provider.impl;
 
+import com.silianbo.springcloud.provider.FindService;
 import org.springframework.stereotype.Component;
 
 @Component
