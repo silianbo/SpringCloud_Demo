@@ -1,5 +1,0 @@
-eureka 注册服务
-     d-eureka-server --- 8001
-     d-eureka-clinet --- 8002
-hello demo项目
-     使用端口 --- 8080

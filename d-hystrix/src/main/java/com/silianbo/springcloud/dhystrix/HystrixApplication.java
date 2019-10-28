@@ -1,13 +1,13 @@
-package com.silianbo.springcloud.dribbon;
+package com.silianbo.springcloud.dhystrix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DRibbonApplication {
+public class HystrixApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DRibbonApplication.class, args);
+        SpringApplication.run(HystrixApplication.class, args);
     }
 
 }

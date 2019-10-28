@@ -11,9 +11,9 @@ eureka:
     status-page-url:
 
   server:
-    #关闭自我保护机制
+    #鍏抽棴鑷垜淇濇姢鏈哄埗
     enable-self-preservation: false
-    #清理无效节点 4s
+    #娓呯悊鏃犳晥鑺傜偣 4s
     eviction-interval-timer-in-ms: 4000
 
   client:

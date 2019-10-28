@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8888
 
 spring:
   application:
@@ -16,6 +16,10 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     #eureka server 在30s 后，没有收到 client信息的心跳,则将注册的客户端移除
     lease-expiration-duration-in-seconds: 30
+    # 配置使用主机名注册服务
+    hostname: localhost
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
 
 #@FeignClient 全局Fallback开启
 feign:

@@ -1,13 +1,13 @@
-package com.silianbo.springcloud.dzuul;
+package com.silianbo.springcloud.dribbon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DZuulApplication {
+public class RibbonApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DZuulApplication.class, args);
+        SpringApplication.run(RibbonApplication.class, args);
     }
 
 }

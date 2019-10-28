@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 1. FeignClient value 为接入的服务名称
  * 2. 服务接口的接口地址
+ * @author bo
  */
 @FeignClient(value = "hello", fallback = FindServiceImpl.class)
 public interface FindService {
