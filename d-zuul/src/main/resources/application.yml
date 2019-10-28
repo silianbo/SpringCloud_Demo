@@ -5,16 +5,25 @@ spring:
   application:
     name: zuul
 
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
 #路由规则设定
 zuul:
   routes:
+    #163路由基本功能测试
     routeTest:
       path: /routeTest/163
       url: http://www.163.com/
 
+    #通过注册的服务获取
     api-1:
       path: /api-1/**
       serviceId: hello
+    #通过url进行跳转
     api-2:
       path: /api-2/**
       url: http://localhost:8888
