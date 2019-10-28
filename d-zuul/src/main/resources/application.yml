@@ -13,6 +13,8 @@ spring:
 
 #路由规则设定
 zuul:
+  #使用 ‘*’ 可忽略所有微服务，多个指定微服务以半角逗号分隔,白名单添加
+  ignored-services: ‘*’
   routes:
     #163路由基本功能测试
     routeTest:
@@ -27,11 +29,14 @@ zuul:
     api-2:
       path: /api-2/**
       url: http://localhost:8888
+    api-3:
+      path: /api-3/**
+      url: http://localhost:8888
+      stripPrefix: false
 
 # 是否去除path前缀
 # 当stripPrefix=true的时候 （http://localhost:8003/api-1/find/s?username=silianbo -> http://localhost:8888/find/s?username=silianbo）
 # 当stripPrefix=false （http://localhost:8003/api-1/find/s?username=silianbo -> http://localhost:8888/api-1/find/s?username=silianbo）
-#      stripPrefix: false
 
 eureka:
   client:
