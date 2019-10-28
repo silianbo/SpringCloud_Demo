@@ -2,6 +2,8 @@ package com.silianbo.springcloud.dzuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import com.silianbo.springcloud.dzuul.util.ZuulUtil;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +26,7 @@ public class PreZuulFilter extends ZuulFilter {
      */
     @Override
     public String filterType() {
-        return "pre";
+        return ZuulUtil.FiltreType.PRE;
     }
 
     /**
@@ -61,7 +63,7 @@ public class PreZuulFilter extends ZuulFilter {
         logger.info("{} AccessUserNameFilter request to {}", request.getMethod(), request.getRequestURL().toString());
         // 获取请求的参数
         String username = request.getParameter("username");
-        if ("silianbo".equals(username)) {
+        if (StringUtils.isNotBlank(username)) {
             ctx.setSendZuulResponse(true);
             ctx.setResponseStatusCode(200);
             ctx.set("isSuccess", true);
@@ -71,7 +73,7 @@ public class PreZuulFilter extends ZuulFilter {
             // 返回错误码
             ctx.setResponseStatusCode(401);
             // 返回错误内容
-            ctx.setResponseBody("{\"result\":\"请求前拦截生效!\"}");
+            ctx.setResponseBody("{\"result\":\"请求前拦截生效,username不能为空!\"}");
             ctx.set("isSuccess", false);
             return null;
         }
