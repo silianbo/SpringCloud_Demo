@@ -12,6 +12,7 @@
     <groupId>com.silianbo.springcloud</groupId>
     <artifactId>d-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>d-ribbon</name>
 
     <modules>

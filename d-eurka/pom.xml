@@ -12,6 +12,7 @@
     <groupId>com.silianbo.springcloud</groupId>
     <artifactId>d-eurka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>d-eurka</name>
 
     <modules>
@@ -48,4 +49,11 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 </project>
