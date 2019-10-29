@@ -26,7 +26,7 @@ public class PreZuulFilter extends ZuulFilter {
      */
     @Override
     public String filterType() {
-        return ZuulUtil.FiltreType.PRE;
+        return ZuulUtil.FilterType.PRE;
     }
 
     /**
@@ -60,22 +60,23 @@ public class PreZuulFilter extends ZuulFilter {
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-        logger.info("{} AccessUserNameFilter request to {}", request.getMethod(), request.getRequestURL().toString());
+        logger.info("进入pre 过滤器");
+        logger.info("{} PreZuulFilter request to {}", request.getMethod(), request.getRequestURL().toString());
         // 获取请求的参数
         String username = request.getParameter("username");
         if (StringUtils.isNotBlank(username)) {
             ctx.setSendZuulResponse(true);
             ctx.setResponseStatusCode(200);
-            ctx.set("isSuccess", true);
+            ctx.set(ZuulUtil.FilterStatus.ISSUCCESS, true);
             return null;
         } else {
             ctx.setSendZuulResponse(false);
             // 返回错误码
             ctx.setResponseStatusCode(401);
             // 返回错误内容
-            ctx.setResponseBody("{\"result\":\"请求前拦截生效,username不能为空!\"}");
+            ctx.setResponseBody("{\"result\":\"请求pre 过滤器 拦截生效,username不能为空!\"}");
             ctx.getResponse().setContentType("text/html;charset=UTF-8");
-            ctx.set("isSuccess", false);
+            ctx.set(ZuulUtil.FilterStatus.ISSUCCESS, false);
             return null;
         }
     }
