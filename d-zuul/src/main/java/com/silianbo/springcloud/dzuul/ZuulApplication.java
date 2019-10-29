@@ -10,6 +10,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 
 /**
+ * 主要用于网关服务
+ *
  * @author bo
  */
 @SpringBootApplication
