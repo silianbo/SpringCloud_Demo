@@ -74,6 +74,7 @@ public class PreZuulFilter extends ZuulFilter {
             ctx.setResponseStatusCode(401);
             // 返回错误内容
             ctx.setResponseBody("{\"result\":\"请求前拦截生效,username不能为空!\"}");
+            ctx.getResponse().setContentType("text/html;charset=UTF-8");
             ctx.set("isSuccess", false);
             return null;
         }
