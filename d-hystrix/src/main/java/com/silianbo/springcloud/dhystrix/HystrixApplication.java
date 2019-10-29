@@ -14,7 +14,7 @@ public class HystrixApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HystrixApplication.class, args);
-        logger.info("d-hystrix启动完成！！！");
+        logger.info("service-hystrix启动完成！！！");
     }
 
 }

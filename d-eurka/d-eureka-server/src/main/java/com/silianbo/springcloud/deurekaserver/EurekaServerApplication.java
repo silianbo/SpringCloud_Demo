@@ -18,7 +18,7 @@ public class EurekaServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EurekaServerApplication.class, args);
-        logger.info("d-eureka-server启动完成！！！");
+        logger.info("service-eureka-server启动完成！！！");
     }
 
 }

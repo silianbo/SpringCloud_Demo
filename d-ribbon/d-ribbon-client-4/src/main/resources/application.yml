@@ -1,9 +1,9 @@
 server:
-  port: 8004
+  port: 8009
 
 spring:
   application:
-    name: d-ribbon
+    name: service-ribbon-client
 
 eureka:
   client:
