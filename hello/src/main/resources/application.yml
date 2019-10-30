@@ -25,3 +25,10 @@ eureka:
 feign:
   hystrix:
     enabled: true
+
+logging:
+  level:
+    org.springframework: warn
+  file:
+    path: logs/hello/
+    max-size: 100MB
