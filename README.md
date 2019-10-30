@@ -1,7 +1,7 @@
 # SpringCloud_Demo
 SpringCloud系统知识持续补充中
 
-#### 端口分布表格
+#### 端口占用表格
 <!--
 端口分布说明
 -->
@@ -15,3 +15,8 @@ SpringCloud系统知识持续补充中
 |  d-ribbon-client-2 |   service-ribbon-client  |  8005     |service-eureka-server、service-ribbon-client |负载均衡处理|
 |  d-ribbon-client-3 |   service-ribbon-client  |  8006     |service-eureka-server、service-ribbon-client |负载均衡处理|
 |  d-ribbon-client-4 |   service-ribbon-client  |  8007     |service-eureka-server、service-ribbon-client |负载均衡处理|
+|  d-nacos-provider  |   service-nacos-provider |  8008     |nacos               |服务注册 --- 提供者|
+|                    |   nacos                  |  8848     |nacos               | [nacos](https://github.com/alibaba/nacos/releases)|
+|                    |   nacos-provider         |  18080    |                    |               |
+|  d-nacos-consumer  |   service-nacos-consumer |  8009     |nacos、service-nacos-provider       |服务注册 --- 消费者|
+|                    |   nacos-consumer         |  18081    |                    |               |

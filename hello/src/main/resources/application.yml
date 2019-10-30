@@ -29,6 +29,6 @@ feign:
 logging:
   level:
     org.springframework: warn
-  file:
-    path: logs/hello/
-    max-size: 100MB
+#  file:
+#    path: logs/hello/
+#    max-size: 100MB

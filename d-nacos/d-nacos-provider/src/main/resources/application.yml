@@ -1,0 +1,10 @@
+server:
+  port: 8008
+
+spring:
+  application:
+    name: service-nacos-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

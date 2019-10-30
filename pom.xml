@@ -15,6 +15,7 @@
         <module>d-ribbon</module>
         <module>d-zuul</module>
         <module>hello</module>
+        <module>d-nacos</module>
     </modules>
 
     <properties>

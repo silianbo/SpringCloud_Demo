@@ -24,6 +24,6 @@ eureka:
 logging:
   level:
     org.springframework: warn
-  file:
-    path: logs/eureka-server/
-    max-size: 100MB
+#  file:
+#    path: logs/eureka-server/
+#    max-size: 100MB
