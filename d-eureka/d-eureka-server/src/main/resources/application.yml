@@ -8,7 +8,6 @@ spring:
 eureka:
   instance:
     hostname: localhost
-    status-page-url:
 
   server:
     #关闭自我保护机制
@@ -21,3 +20,10 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+  level:
+    org.springframework: warn
+  file:
+    path: logs/eureka-server/
+    max-size: 100MB
