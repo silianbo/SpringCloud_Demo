@@ -1,6 +1,6 @@
-package com.silianbo.springcloud.controller;
+package com.silianbo.springcloud.ribbon.controller;
 
-import com.silianbo.springcloud.entity.User;
+import com.silianbo.springcloud.feign.entity.User;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

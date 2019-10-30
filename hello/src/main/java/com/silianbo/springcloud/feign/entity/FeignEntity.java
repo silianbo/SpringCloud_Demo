@@ -1,4 +1,4 @@
-package com.silianbo.springcloud.entity;
+package com.silianbo.springcloud.feign.entity;
 
 public class FeignEntity {
     private String id;

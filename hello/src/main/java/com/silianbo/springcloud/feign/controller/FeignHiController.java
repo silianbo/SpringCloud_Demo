@@ -1,6 +1,6 @@
-package com.silianbo.springcloud.controller;
+package com.silianbo.springcloud.feign.controller;
 
-import com.silianbo.springcloud.provider.FindService;
+import com.silianbo.springcloud.feign.FindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
-package com.silianbo.springcloud.provider;
+package com.silianbo.springcloud.feign;
 
-import com.silianbo.springcloud.provider.impl.FindServiceImpl;
+import com.silianbo.springcloud.feign.impl.FindServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

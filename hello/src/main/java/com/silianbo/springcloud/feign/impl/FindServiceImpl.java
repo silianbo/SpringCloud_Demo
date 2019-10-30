@@ -1,6 +1,6 @@
-package com.silianbo.springcloud.provider.impl;
+package com.silianbo.springcloud.feign.impl;
 
-import com.silianbo.springcloud.provider.FindService;
+import com.silianbo.springcloud.feign.FindService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
