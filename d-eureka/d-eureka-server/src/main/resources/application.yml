@@ -20,10 +20,10 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
 logging:
   level:
     org.springframework: warn
-#  file:
-#    path: logs/eureka-server/
-#    max-size: 100MB
+  pattern:
+    level:
+    file:
+    console: '%clr(%d{YYYY:HH:mm:ss}){yellow} %-5level %clr(%logger){green}  %msg%n'
