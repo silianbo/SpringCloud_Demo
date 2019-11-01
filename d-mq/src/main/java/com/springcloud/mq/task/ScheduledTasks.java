@@ -23,31 +23,41 @@ public class ScheduledTasks {
     private RedisSender redisSender;
 
     /**
-     * 1s =(fixedRate = 10000)
+     * 1S
      */
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000, zone = "Asia/Shanghai")
     public void sendHelloMessage() {
         rabbitSender.send(RabbitCons.QueueName.QUEUE_NAME, RabbitCons.QueueName.QUEUE_NAME + " " + new Date());
     }
 
-
-    @Scheduled(fixedRate = 10000 * 60 * 5)
+    /**
+     * 3分钟一次
+     */
+    @Scheduled(cron = "0 0/3 * * * ?", zone = "Asia/Shanghai")
     public void sendHelloWorkMessage() {
         rabbitSender.send(RabbitCons.QueueName.QUEUE_NAME_WORK, RabbitCons.QueueName.QUEUE_NAME_WORK + " " + new Date());
     }
 
-    @Scheduled(fixedRate = 10000 * 60 * 10)
+    /**
+     * 10分钟一次
+     */
+    @Scheduled(cron = "0 0/10 * * * ?", zone = "Asia/Shanghai")
     public void sendBindMessage() {
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, RabbitCons.Routingkey.TOPIC_ROUTINGKEY, "Direct交换机的绑定 " + new Date());
     }
 
-    @Scheduled(fixedRate = 10000 * 60 * 15)
+    /**
+     * 15分钟一次
+     */
+    @Scheduled(cron = "0 0/15 * * * ?", zone = "Asia/Shanghai")
     public void sendBoMessage() {
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, RabbitCons.Routingkey.TOPIC_ROUTINGKEY_ALL, "Topic交换机的绑定 " + new Date());
     }
 
-
-    @Scheduled(fixedRate = 10000 * 60 * 20)
+    /**
+     * 周一到周五 9点
+     */
+    @Scheduled(cron = "0 0 9 ? * MON-FRI", zone = "Asia/Shanghai")
     public void sendMessageToRedis() {
         redisSender.send(RedisCons.CHANNEL, "Hello Redis!" + new Date());
     }
