@@ -23,7 +23,8 @@ public class RabbitCons {
      * 绑定关系
      */
     public interface Routingkey {
-        String TOPIC_ROUTINGKEY = "test.topic.routingKey";
         String TOPIC_ROUTINGKEY_ALL = "test.topic.routingKey.*";
+        String TOPIC_ROUTINGKEY = "test.topic.routingKey";
+        String TOPIC_ROUTINGKEY_ALL_SILIANBO = "test.topic.routingKey.silianbo";
     }
 }
