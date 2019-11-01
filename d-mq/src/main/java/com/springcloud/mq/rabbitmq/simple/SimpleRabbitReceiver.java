@@ -21,7 +21,7 @@ public class SimpleRabbitReceiver {
 
     @RabbitListener(queues = RabbitCons.QueueName.QUEUE_NAME)
     public void process1(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
-        channel.basicAck(deliveryTag, true);
+        channel.basicAck(deliveryTag, false);
         logger.info("[消费者1 RabbitMQ,队列{} ]msg={}", RabbitCons.QueueName.QUEUE_NAME, msg);
     }
 
