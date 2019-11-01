@@ -31,23 +31,23 @@ public class ScheduledTasks {
     }
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000 * 60 * 5)
     public void sendHelloWorkMessage() {
         rabbitSender.send(RabbitCons.QueueName.QUEUE_NAME_WORK, RabbitCons.QueueName.QUEUE_NAME_WORK + " " + new Date());
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000 * 60 * 10)
     public void sendBindMessage() {
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, RabbitCons.Routingkey.TOPIC_ROUTINGKEY, "Direct交换机的绑定 " + new Date());
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000 * 60 * 15)
     public void sendBoMessage() {
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, RabbitCons.Routingkey.TOPIC_ROUTINGKEY_ALL, "Topic交换机的绑定 " + new Date());
     }
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000 * 60 * 20)
     public void sendMessageToRedis() {
         redisSender.send(RedisCons.CHANNEL, "Hello Redis!" + new Date());
     }

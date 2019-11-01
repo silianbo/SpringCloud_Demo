@@ -35,7 +35,7 @@ import org.springframework.context.annotation.Configuration;
  * @author bo
  */
 @Configuration
-public class RabbitConfig {
+public class RabbitMQConfig {
     @Bean
     Queue queueTest() {
         return new Queue(RabbitCons.QueueName.TOPIC_QUEUE, false);

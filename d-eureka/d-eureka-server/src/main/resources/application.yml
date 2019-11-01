@@ -23,6 +23,7 @@ eureka:
 logging:
   level:
     org.springframework: warn
+    com.netflix.eureka.registry.AbstractInstanceRegistry: warn
   pattern:
     level:
     file:
