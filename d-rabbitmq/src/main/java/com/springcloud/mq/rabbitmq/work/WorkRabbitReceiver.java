@@ -17,7 +17,7 @@ public class WorkRabbitReceiver {
 
     @RabbitHandler
     public void process(String msg) throws InterruptedException {
-        logger.info("消费--->: [{}]", msg);
+        logger.info("class=WorkRabbitReceiver,op=start_process, msg={}", msg);
         Thread.sleep(10 * 60 * 1000);
     }
 }

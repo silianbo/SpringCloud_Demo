@@ -17,6 +17,6 @@ public class SimpleRabbitReceiver {
 
     @RabbitHandler
     public void process(String msg) {
-        logger.info("消费--->: [{}]", msg);
+        logger.info("class=SimpleRabbitReceiver,op=start_process, msg={}", msg);
     }
 }

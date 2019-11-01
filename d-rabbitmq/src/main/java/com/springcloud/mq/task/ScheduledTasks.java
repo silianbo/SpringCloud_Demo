@@ -2,7 +2,6 @@ package com.springcloud.mq.task;
 
 import com.springcloud.mq.constant.TopicRabbitConfig;
 import com.springcloud.mq.rabbitmq.RabbitSender;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -23,13 +22,13 @@ public class ScheduledTasks {
 
     @Scheduled(fixedRate = 10000)
     public void sendHelloMessage() {
-        rabbitSender.send(TopicRabbitConfig.QueueName.QUEUE_NAME, "QUEUE_NAME " + new Date());
+        rabbitSender.send(TopicRabbitConfig.QueueName.QUEUE_NAME, TopicRabbitConfig.QueueName.QUEUE_NAME + " " + new Date());
     }
 
 
     @Scheduled(fixedRate = 10000)
     public void sendHelloWorkMessage() {
-        rabbitSender.send(TopicRabbitConfig.QueueName.QUEUE_NAME_WORK, "QUEUE_NAME_WORK " + new Date());
+        rabbitSender.send(TopicRabbitConfig.QueueName.QUEUE_NAME_WORK, TopicRabbitConfig.QueueName.QUEUE_NAME_WORK + " " + new Date());
     }
 
     @Scheduled(fixedRate = 10000)

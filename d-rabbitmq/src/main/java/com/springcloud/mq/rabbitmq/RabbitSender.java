@@ -20,12 +20,12 @@ public class RabbitSender {
     }
 
     public void send(String queueName, String context) {
-        logger.info("[生产者，队列] ---- queueName:{} context:[{}]", queueName, context);
+        logger.info("[RabbitSender] ---- queueName:{} context:[{}]", queueName, context);
         this.rabbitTemplate.convertAndSend(queueName, context);
     }
 
     public void send(String exchange, String routingKey, String context) {
-        logger.info("[生产者，交换] ---- exchange:{} routingKey:{} context:[{}]", exchange, routingKey, context);
+        logger.info("[RabbitSender] ---- exchange:{} routingKey:{} context:[{}]", exchange, routingKey, context);
         this.rabbitTemplate.convertAndSend(exchange, routingKey, context);
     }
 }
