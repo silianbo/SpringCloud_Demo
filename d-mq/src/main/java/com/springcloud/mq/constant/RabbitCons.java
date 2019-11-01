@@ -1,6 +1,6 @@
 package com.springcloud.mq.constant;
 
-public class TopicRabbitConfig {
+public class RabbitCons {
     /**
      * 消息队列名称
      */
@@ -8,6 +8,8 @@ public class TopicRabbitConfig {
         String TOPIC_QUEUE = "test.topic.hello";
         String QUEUE_NAME = "hello";
         String QUEUE_NAME_WORK = "hello_work";
+
+        String QUEUE_NAME_S = "test.topic.hello.silianbo";
     }
 
     /**
@@ -22,5 +24,6 @@ public class TopicRabbitConfig {
      */
     public interface Routingkey {
         String TOPIC_ROUTINGKEY = "test.topic.routingKey";
+        String TOPIC_ROUTINGKEY_ALL = "test.topic.routingKey.*";
     }
 }

@@ -19,4 +19,5 @@ SpringCloud系统知识持续补充中
 |                    |   nacos                  |  8848     |nacos               | [nacos demo](https://github.com/alibaba/nacos/releases)|
 |  d-nacos-consumer  |   service-nacos-consumer |  8009     |nacos、service-nacos-provider       |服务注册 --- 消费者|
 |                    |   rabbitmq               |  5672     |                                    |消息中间件|
-|  d-rabbitmq        |   service-rabbitmq       |  8010     |service-rabbitmq、rabbitmq          |消息中间件 依赖 rabbitmq|
+|                    |   redis                  |  6379     |                                    |消息中间件|
+|  d-mq        |   service-mq       |  8010     |service-mq、rabbitmq、redis          |消息中间件 依赖 rabbitmq、redis|

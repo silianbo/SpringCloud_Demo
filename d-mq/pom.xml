@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.silianbo.springcloud</groupId>
-    <artifactId>d-rabbitmq</artifactId>
+    <artifactId>d-mq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>d-rabbitmq</name>
+    <name>d-mq</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -23,7 +23,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -31,7 +31,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
 

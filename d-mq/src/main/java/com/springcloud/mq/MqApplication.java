@@ -9,8 +9,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @EnableEurekaClient
 @SpringBootApplication
-public class RabbitmqApplication {
+public class MqApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RabbitmqApplication.class, args);
+        SpringApplication.run(MqApplication.class, args);
     }
 }

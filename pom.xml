@@ -16,7 +16,7 @@
         <module>d-zuul</module>
         <module>hello</module>
         <module>d-nacos</module>
-        <module>d-rabbitmq</module>
+        <module>d-mq</module>
     </modules>
 
     <properties>

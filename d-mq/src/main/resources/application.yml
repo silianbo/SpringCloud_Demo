@@ -1,16 +1,24 @@
 server:
   port: 8010
+
 spring:
   application:
     name: service-rabbitmq
+
   output:
     ansi:
       enabled: always
+
   rabbitmq:
     host: localhost
     port: 5672
     username: guest
     password: guest
+
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
 
 eureka:
   client:
@@ -27,7 +35,7 @@ logging:
   pattern:
     level:
     file:
-    console: '%clr(%d{YYYY:HH:mm:ss}){yellow} %-5level --- %clr(%logger){green}  %msg%n'
+    console: '%clr(%d{YYYY:HH:mm:ss}){yellow} %-5level %clr(%logger){green}  %msg%n'
     # console: '%clr(%d{HH:mm:ss}){yellow} [%clr(%thread){red}] %-5level --- %clr(%logger){green} | %msg%n'
 
 
