@@ -33,22 +33,22 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMqDirectConfig {
     @Bean
     public Queue directQueueOrange() {
-        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_ORANGE, false);
+        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_ORANGE, true);
     }
 
     @Bean
     public Queue directQueueBlack1() {
-        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_BLACK_1, false);
+        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_BLACK_1, true);
     }
 
     @Bean
     public Queue directQueueBlack2() {
-        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_BLACK_2, false);
+        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_BLACK_2, true);
     }
 
     @Bean
     public Queue directQueueGreen() {
-        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_GREEN, false);
+        return new Queue(RabbitCons.QueueName.DIRECT_QUEUE_GREEN, true);
     }
 
     @Bean
@@ -67,12 +67,12 @@ public class RabbitMqDirectConfig {
     }
 
     @Bean
-    Binding bindingDirectQueueBlack2(@Qualifier("directQueueOrange") Queue queue, @Qualifier("directExchange") TopicExchange exchange) {
+    Binding bindingDirectQueueBlack2(@Qualifier("directQueueBlack2") Queue queue, @Qualifier("directExchange") TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(RabbitCons.Routingkey.DIRECT_ROUTINGKEY_BLACK);
     }
 
     @Bean
-    Binding bindingDirectQueueGreen(@Qualifier("directQueueOrange") Queue queue, @Qualifier("directExchange") TopicExchange exchange) {
+    Binding bindingDirectQueueGreen(@Qualifier("directQueueGreen") Queue queue, @Qualifier("directExchange") TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(RabbitCons.Routingkey.DIRECT_ROUTINGKEY_GREEN);
     }
 }

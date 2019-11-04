@@ -2,9 +2,9 @@ package com.springcloud.mq.rabbitmq;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -15,20 +15,8 @@ import java.util.UUID;
 @Component
 public class RabbitSender implements RabbitTemplate.ConfirmCallback {
     private static final Logger logger = LoggerFactory.getLogger(RabbitSender.class);
-    private final RabbitTemplate rabbitTemplate;
-
-    private final FanoutExchange fanoutExchange;
-
-    public RabbitSender(RabbitTemplate rabbitTemplate, FanoutExchange fanoutExchange) {
-        this.rabbitTemplate = rabbitTemplate;
-        this.fanoutExchange = fanoutExchange;
-    }
-
-    public void sendFanout(String message) {
-        String exchange = fanoutExchange.getName();
-        this.rabbitTemplate.convertAndSend(fanoutExchange.getName(), "", message);
-        logger.info("[生产者RabbitMQ 广播]exchange:{} routingKey:{} message:[{}]", exchange, "", message);
-    }
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     public void send(String exchange, String routingKey, String message) {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+import static com.springcloud.mq.constant.RabbitCons.Exchange.FANOUT_EXCHANGE;
 import static com.springcloud.mq.constant.RabbitCons.Routingkey.*;
 
 /**
@@ -27,7 +28,7 @@ public class ScheduledTasks {
      */
     @Scheduled(fixedRate = 10000, zone = "Asia/Shanghai")
     public void sendFanoutMessage() {
-        rabbitSender.sendFanout("广播 " + new Date());
+        rabbitSender.send(FANOUT_EXCHANGE, "", "广播 " + new Date());
     }
 
     /**
@@ -35,10 +36,10 @@ public class ScheduledTasks {
      */
     @Scheduled(cron = "0 0/10 * * * ?", zone = "Asia/Shanghai")
     public void sendDirectMessage() {
-        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_ORANGE, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_ORANGE + " " + new Date());
-        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_BLACK_1, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_BLACK_1 + " " + new Date());
-        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_BLACK_2, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_BLACK_2 + " " + new Date());
-        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_GREEN, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_GREEN + " " + new Date());
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, DIRECT_ROUTINGKEY_ORANGE, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_ORANGE + " " + new Date());
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, DIRECT_ROUTINGKEY_BLACK, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_BLACK_1 + " " + new Date());
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, DIRECT_ROUTINGKEY_BLACK, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_BLACK_2 + " " + new Date());
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, DIRECT_ROUTINGKEY_GREEN, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_GREEN + " " + new Date());
     }
 
     /**

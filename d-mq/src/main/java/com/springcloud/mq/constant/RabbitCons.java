@@ -9,6 +9,10 @@ public class RabbitCons {
      */
     public interface QueueName {
         /**
+         * 广播
+         */
+        String FANOUT_QUEUENAME = "test.direct.Fanout";
+        /**
          * 直连
          */
         String DIRECT_QUEUE_ORANGE = "test.direct.orange";

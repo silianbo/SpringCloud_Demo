@@ -1,7 +1,10 @@
 package com.springcloud.mq.conf;
 
 import com.springcloud.mq.constant.RabbitCons;
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,17 +27,12 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitMqFanoutConfig {
-    /**
-     * 方法名：autoDeleteQueue
-     * 描述  ：
-     * AnonymousQueue类型的队列，它的名字是由客户端生成的，而且是非持久的，独占的，自动删除的队列
-     *
-     * @return: org.springframework.amqp.core.Queue
-     */
+
     @Bean
-    public Queue autoDeleteQueue() {
-        return new AnonymousQueue();
+    public Queue fanoutQueue() {
+        return new Queue(RabbitCons.QueueName.FANOUT_QUEUENAME, true);
     }
+
 
     @Bean
     FanoutExchange fanoutExchange() {
@@ -42,7 +40,7 @@ public class RabbitMqFanoutConfig {
     }
 
     @Bean
-    public Binding binding(@Qualifier("fanoutExchange") FanoutExchange fanout, @Qualifier("autoDeleteQueue") Queue queue) {
+    public Binding binding(@Qualifier("fanoutExchange") FanoutExchange fanout, @Qualifier("fanoutQueue") Queue queue) {
         return BindingBuilder.bind(queue).to(fanout);
     }
 }

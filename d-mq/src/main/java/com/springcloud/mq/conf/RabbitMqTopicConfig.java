@@ -33,17 +33,17 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMqTopicConfig {
     @Bean
     public Queue topicQueueOrange() {
-        return new Queue(RabbitCons.QueueName.TOPIC_QUEUE_ORANGE, false);
+        return new Queue(RabbitCons.QueueName.TOPIC_QUEUE_ORANGE, true);
     }
 
     @Bean
     public Queue topicQueueBlack() {
-        return new Queue(RabbitCons.QueueName.TOPIC_QUEUE_BLACK, false);
+        return new Queue(RabbitCons.QueueName.TOPIC_QUEUE_BLACK, true);
     }
 
     @Bean
     public Queue topicQueueGreen() {
-        return new Queue(RabbitCons.QueueName.TOPIC_QUEUE_GREEN, false);
+        return new Queue(RabbitCons.QueueName.TOPIC_QUEUE_GREEN, true);
     }
 
     @Bean

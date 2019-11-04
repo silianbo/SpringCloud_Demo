@@ -20,7 +20,7 @@ import static com.springcloud.mq.constant.RabbitCons.QueueName.*;
 public class RabbitReceiver {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RabbitListener(queues = "#{autoDeleteQueue.name}")
+    @RabbitListener(queues = FANOUT_QUEUENAME)
     public void process(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
         channel.basicAck(deliveryTag, false);
         logger.info("[消费者(广播方式)  RabbitMQ]msg={}", msg);
@@ -33,32 +33,38 @@ public class RabbitReceiver {
     }
 
     @RabbitListener(queues = DIRECT_QUEUE_BLACK_2)
-    public void process2(String msg) {
+    public void process2(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+        channel.basicAck(deliveryTag, false);
         logger.info("[消费者2 RabbitMQ,队列{} ]msg={}", DIRECT_QUEUE_BLACK_2, msg);
     }
 
     @RabbitListener(queues = DIRECT_QUEUE_GREEN)
-    public void process3(String msg) {
+    public void process3(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+        channel.basicAck(deliveryTag, false);
         logger.info("[消费者2 RabbitMQ,队列{} ]msg={}", DIRECT_QUEUE_GREEN, msg);
     }
 
     @RabbitListener(queues = DIRECT_QUEUE_ORANGE)
-    public void process4(String msg) {
+    public void process4(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+        channel.basicAck(deliveryTag, false);
         logger.info("[消费者4 RabbitMQ,队列{}] ]msg={}", DIRECT_QUEUE_ORANGE, msg);
     }
 
     @RabbitListener(queues = TOPIC_QUEUE_ORANGE)
-    public void process5(String msg) {
+    public void process5(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+        channel.basicAck(deliveryTag, false);
         logger.info("[消费者5 RabbitMQ,队列{}] ]msg={}", TOPIC_QUEUE_ORANGE, msg);
     }
 
     @RabbitListener(queues = TOPIC_QUEUE_BLACK)
-    public void process6(String msg) {
+    public void process6(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+        channel.basicAck(deliveryTag, false);
         logger.info("[消费者6 RabbitMQ,队列{}] ]msg={}", TOPIC_QUEUE_BLACK, msg);
     }
 
     @RabbitListener(queues = TOPIC_QUEUE_GREEN)
-    public void process7(String msg) {
+    public void process7(@Payload String msg, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+        channel.basicAck(deliveryTag, false);
         logger.info("[消费者7 RabbitMQ,队列{}] ]msg={}", TOPIC_QUEUE_GREEN, msg);
     }
 }
