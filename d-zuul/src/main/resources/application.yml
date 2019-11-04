@@ -33,6 +33,9 @@ zuul:
       path: /api-3/**
       url: http://localhost:8888
       stripPrefix: false
+    api-4:
+      path: /api/rabbitmq/**
+      url: http://localhost:8010
 
 # 是否去除path前缀
 # 当stripPrefix=true的时候 （http://localhost:8003/api-1/find/s?username=silianbo -> http://localhost:8888/find/s?username=silianbo）

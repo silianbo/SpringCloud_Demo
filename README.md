@@ -3,10 +3,6 @@ SpringCloud系统知识持续补充中
 - ##### 已接入技术：
 Springboot、Eureka、Zuul、Ribbon、Nacos、RabbitMQ、Redis、FeignClient、Hystrix。
 
-- ##### 计划接入技术：
-Hadoop、MyBatis、Oracle、LDAP、VUE
-
-
 - ##### 端口占用表格
 <!--
 端口分布说明
@@ -16,7 +12,7 @@ Hadoop、MyBatis、Oracle、LDAP、VUE
 |  hello             |   hello                  |  8888     |service-eureka-server |功能集成模块  |
 |  d-eureka-server   |   service-eureka-server  |  8001     |service-eureka-server |服务注册于发现，云端负载均衡，一个基于 REST 的服务，用于定位服务，以实现云端的负载均衡和中间层服务器的故障转移  |
 |  d-eureka-clinet   |   service-eureka-client  |  8002     |service-eureka-server |服务注册 -- 测试  |
-|  d-zuul            |   service-zuul           |  8003     |service-eureka-server、hello |API 动态路由，监控，弹性，安全等的边缘服务|
+|  d-zuul            |   service-zuul           |  8003     |service-eureka-server、hello、service-mq、rabbitmq、redis |API 动态路由，监控，弹性，安全等的边缘服务|
 |  d-ribbon-client-1 |   service-ribbon-client  |  8004     |service-eureka-server、service-ribbon-client |负载均衡处理|
 |  d-ribbon-client-2 |   service-ribbon-client  |  8005     |service-eureka-server、service-ribbon-client |负载均衡处理|
 |  d-ribbon-client-3 |   service-ribbon-client  |  8006     |service-eureka-server、service-ribbon-client |负载均衡处理|

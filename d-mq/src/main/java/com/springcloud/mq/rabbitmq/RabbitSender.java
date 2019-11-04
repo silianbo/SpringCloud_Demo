@@ -4,14 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 /**
  * @author bo
  */
-@Component
+@Service
 public class RabbitSender implements RabbitTemplate.ConfirmCallback {
     private static final Logger logger = LoggerFactory.getLogger(RabbitSender.class);
     private final RabbitTemplate rabbitTemplate;
