@@ -11,7 +11,7 @@ public class RabbitCons {
         /**
          * 广播
          */
-        String FANOUT_QUEUENAME = "test.direct.Fanout";
+        String FANOUT_QUEUENAME = "test.fanout.queue";
         /**
          * 直连
          */
@@ -19,7 +19,6 @@ public class RabbitCons {
         String DIRECT_QUEUE_BLACK_1 = "test.direct.black.1";
         String DIRECT_QUEUE_BLACK_2 = "test.direct.black.2";
         String DIRECT_QUEUE_GREEN = "test.direct.green";
-
         /**
          * 订阅
          */
