@@ -3,10 +3,6 @@ SpringCloud系统知识持续补充中
 - ##### 已接入技术：
 Springboot、Eureka、Zuul、Ribbon、Nacos、RabbitMQ、Redis、FeignClient、Hystrix。
 
-- ##### 计划接入技术：
-Hadoop、MyBatis、Oracle、LDAP、VUE
-
-
 - ##### 端口占用表格
 <!--
 端口分布说明
