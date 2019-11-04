@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -16,11 +15,14 @@ import java.util.UUID;
 @Component
 public class RabbitSender implements RabbitTemplate.ConfirmCallback {
     private static final Logger logger = LoggerFactory.getLogger(RabbitSender.class);
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
-    @Autowired
-    private FanoutExchange fanoutExchange;
+    private final FanoutExchange fanoutExchange;
+
+    public RabbitSender(RabbitTemplate rabbitTemplate, FanoutExchange fanoutExchange) {
+        this.rabbitTemplate = rabbitTemplate;
+        this.fanoutExchange = fanoutExchange;
+    }
 
     public void sendFanout(String message) {
         String exchange = fanoutExchange.getName();

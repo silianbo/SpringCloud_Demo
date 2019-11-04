@@ -46,15 +46,24 @@ public class ScheduledTasks {
      */
     @Scheduled(cron = "0 0/3 * * * ?", zone = "Asia/Shanghai")
     public void sendTopicMessage() {
+        /*
+         * 发送订阅 适配 *.orange.*
+         */
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.orange.name1", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.orange.name2", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send1.orange.name", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send2.orange.name", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
 
+        /*
+         * 发送订阅 适配 *.*.black
+         */
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.silianbo.black", "订阅 " + TOPIC_ROUTINGKEY_BLACK + new Date());
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send1.silianbo.black", "订阅 " + TOPIC_ROUTINGKEY_BLACK + new Date());
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.silianbo1.black", "订阅 " + TOPIC_ROUTINGKEY_BLACK + new Date());
 
+        /*
+         * 发送订阅 适配 green.#
+         */
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "green.name1", "订阅 " + TOPIC_ROUTINGKEY_GREEN + new Date());
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "green.name2", "订阅 " + TOPIC_ROUTINGKEY_GREEN + new Date());
         rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "green.name3", "订阅 " + TOPIC_ROUTINGKEY_GREEN + new Date());

@@ -8,12 +8,17 @@ public class RabbitCons {
      * 消息队列名称
      */
     public interface QueueName {
+        /**
+         * 直连
+         */
         String DIRECT_QUEUE_ORANGE = "test.direct.orange";
         String DIRECT_QUEUE_BLACK_1 = "test.direct.black.1";
         String DIRECT_QUEUE_BLACK_2 = "test.direct.black.2";
         String DIRECT_QUEUE_GREEN = "test.direct.green";
 
-
+        /**
+         * 订阅
+         */
         String TOPIC_QUEUE_ORANGE = "test.topic.orange";
         String TOPIC_QUEUE_BLACK = "test.topic.black";
         String TOPIC_QUEUE_GREEN = "test.topic.green";
