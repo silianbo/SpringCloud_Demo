@@ -2,6 +2,7 @@ package com.springcloud.mq.rabbitmq;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,16 @@ public class RabbitSender implements RabbitTemplate.ConfirmCallback {
     private static final Logger logger = LoggerFactory.getLogger(RabbitSender.class);
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private FanoutExchange fanoutExchange;
+
+    public void sendFanout(String message) {
+        String exchange = fanoutExchange.getName();
+        this.rabbitTemplate.convertAndSend(fanoutExchange.getName(), "", message);
+        logger.info("[生产者RabbitMQ 广播]exchange:{} routingKey:{} message:[{}]", exchange, "", message);
+    }
+
 
     public void send(String queueName, String message) {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());

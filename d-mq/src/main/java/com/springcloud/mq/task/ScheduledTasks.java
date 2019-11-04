@@ -1,15 +1,14 @@
 package com.springcloud.mq.task;
 
 import com.springcloud.mq.constant.RabbitCons;
-import com.springcloud.mq.constant.RedisCons;
 import com.springcloud.mq.rabbitmq.RabbitSender;
-import com.springcloud.mq.redis.RedisSender;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+
+import static com.springcloud.mq.constant.RabbitCons.Routingkey.*;
 
 /**
  * @author bo
@@ -17,48 +16,47 @@ import java.util.Date;
 @Component
 @EnableScheduling
 public class ScheduledTasks {
-    @Autowired
-    private RabbitSender rabbitSender;
-    @Autowired
-    private RedisSender redisSender;
+    private final RabbitSender rabbitSender;
+
+    public ScheduledTasks(RabbitSender rabbitSender) {
+        this.rabbitSender = rabbitSender;
+    }
 
     /**
      * 1S
      */
     @Scheduled(fixedRate = 10000, zone = "Asia/Shanghai")
-    public void sendHelloMessage() {
-        rabbitSender.send(RabbitCons.QueueName.QUEUE_NAME, RabbitCons.QueueName.QUEUE_NAME + " " + new Date());
-    }
-
-    /**
-     * 3分钟一次
-     */
-    @Scheduled(cron = "0 0/3 * * * ?", zone = "Asia/Shanghai")
-    public void sendHelloWorkMessage() {
-        rabbitSender.send(RabbitCons.QueueName.QUEUE_NAME_WORK, RabbitCons.QueueName.QUEUE_NAME_WORK + " " + new Date());
+    public void sendFanoutMessage() {
+        rabbitSender.sendFanout("广播 " + new Date());
     }
 
     /**
      * 10分钟一次
      */
     @Scheduled(cron = "0 0/10 * * * ?", zone = "Asia/Shanghai")
-    public void sendBindMessage() {
-        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, RabbitCons.Routingkey.TOPIC_ROUTINGKEY, "Direct交换机的绑定 " + new Date());
+    public void sendDirectMessage() {
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_ORANGE, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_ORANGE + " " + new Date());
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_BLACK_1, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_BLACK_1 + " " + new Date());
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_BLACK_2, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_BLACK_2 + " " + new Date());
+        rabbitSender.send(RabbitCons.Exchange.DIRECT_EXCHANGE, RabbitCons.QueueName.DIRECT_QUEUE_GREEN, "直连 " + RabbitCons.QueueName.DIRECT_QUEUE_GREEN + " " + new Date());
     }
 
     /**
-     * 15分钟一次
+     * 3分钟一次
      */
-    @Scheduled(cron = "0 0/15 * * * ?", zone = "Asia/Shanghai")
-    public void sendBoMessage() {
-        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, RabbitCons.Routingkey.TOPIC_ROUTINGKEY_ALL, "Topic交换机的绑定 " + new Date());
-    }
+    @Scheduled(cron = "0 0/3 * * * ?", zone = "Asia/Shanghai")
+    public void sendTopicMessage() {
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.orange.name1", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.orange.name2", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send1.orange.name", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send2.orange.name", "订阅 " + TOPIC_ROUTINGKEY_ORANGE + new Date());
 
-    /**
-     * 周一到周五 9点
-     */
-    @Scheduled(cron = "0 0 9 ? * MON-FRI", zone = "Asia/Shanghai")
-    public void sendMessageToRedis() {
-        redisSender.send(RedisCons.CHANNEL, "Hello Redis!" + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.silianbo.black", "订阅 " + TOPIC_ROUTINGKEY_BLACK + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send1.silianbo.black", "订阅 " + TOPIC_ROUTINGKEY_BLACK + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "send.silianbo1.black", "订阅 " + TOPIC_ROUTINGKEY_BLACK + new Date());
+
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "green.name1", "订阅 " + TOPIC_ROUTINGKEY_GREEN + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "green.name2", "订阅 " + TOPIC_ROUTINGKEY_GREEN + new Date());
+        rabbitSender.send(RabbitCons.Exchange.TOPIC_EXCHANGE, "green.name3", "订阅 " + TOPIC_ROUTINGKEY_GREEN + new Date());
     }
 }
