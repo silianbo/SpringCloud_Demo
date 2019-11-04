@@ -28,15 +28,6 @@ public class RabbitSender implements RabbitTemplate.ConfirmCallback {
         logger.info("[生产者RabbitMQ 广播]exchange:{} routingKey:{} message:[{}]", exchange, "", message);
     }
 
-
-    public void send(String queueName, String message) {
-        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
-        logger.info("callbackSender UUID: " + correlationData.getId());
-        rabbitTemplate.setConfirmCallback(this);
-        this.rabbitTemplate.convertAndSend(queueName, (Object) message, correlationData);
-        logger.info("[生产者RabbitMQ ]queueName:{} message:[{}]", queueName, message);
-    }
-
     public void send(String exchange, String routingKey, String message) {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
         logger.info("callbackSender UUID: " + correlationData.getId());
