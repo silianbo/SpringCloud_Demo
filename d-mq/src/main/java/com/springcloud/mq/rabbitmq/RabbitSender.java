@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -15,24 +14,27 @@ import java.util.UUID;
 @Component
 public class RabbitSender implements RabbitTemplate.ConfirmCallback {
     private static final Logger logger = LoggerFactory.getLogger(RabbitSender.class);
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
+
+    public RabbitSender(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
     public void send(String exchange, String routingKey, String message) {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
         logger.info("callbackSender UUID: " + correlationData.getId());
         rabbitTemplate.setConfirmCallback(this);
         this.rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
-        logger.info("[生产者RabbitMQ ]exchange:{} routingKey:{} message:[{}]", exchange, routingKey, message);
+        logger.info("[RabbitMQ sender]; exchange:{} routingKey:{} message:[{}]", exchange, routingKey, message);
     }
 
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-        logger.info("消息id:" + correlationData.getId());
+        logger.info("correlationData id:" + correlationData.getId());
         if (ack) {
-            logger.info("CallBackConfirm 消息消费成功！");
+            logger.info("CallBackConfirm receive success！");
         } else {
-            logger.info("CallBackConfirm 消息消费失败！");
+            logger.info("CallBackConfirm receive fail！");
         }
 
         if (cause != null) {
