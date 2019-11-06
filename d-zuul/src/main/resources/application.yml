@@ -11,7 +11,7 @@ spring:
       enabled: true
       force: true
 
-#路由规则设定
+#路由规则
 zuul:
   #使用 ‘*’ 可忽略所有微服务，多个指定微服务以半角逗号分隔,白名单添加
   ignored-services: ‘*’
