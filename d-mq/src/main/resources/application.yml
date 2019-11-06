@@ -40,7 +40,6 @@ logging:
     level:
     file:
     console: '%clr(%d{yyyy-MM-dd HH:mm:ss:SSS}){yellow} %-5level %clr(%logger){green}  %msg%n'
-    # console: '%clr(%d{HH:mm:ss}){yellow} [%clr(%thread){red}] %-5level --- %clr(%logger){green} | %msg%n'
 
 
 
