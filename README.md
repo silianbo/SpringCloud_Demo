@@ -23,3 +23,18 @@ Springboot、Eureka、Zuul、Ribbon、Nacos、RabbitMQ、Redis、FeignClient、H
 |                    |   rabbitmq               |  5672     |                                    |消息中间件|
 |                    |   redis                  |  6379     |                                    |消息中间件|
 |  d-mq        |   service-mq       |  8010     |service-mq、rabbitmq、redis          |消息中间件 依赖 rabbitmq、redis|
+
+
+第三方工具下载链接：
+- [Windows版本 Redis 下载 github](https://github.com/microsoftarchive/redis/tags)
+
+- [Linux版本 Redis 下载 google code ](https://code.google.com/archive/p/redis/downloads)
+
+- [Linux版本 Redis 下载 官网 ](https://redis.io/download)
+
+- [nacos 下载 github ](https://github.com/alibaba/nacos/releases)
+
+- [rabbitmq 下载 github ](https://github.com/rabbitmq/rabbitmq-server/releases)
+
+
+
