@@ -34,6 +34,8 @@ Springboot、Eureka、Zuul、Ribbon、Nacos、RabbitMQ、Redis、FeignClient、H
 
 - [nacos 下载 github ](https://github.com/alibaba/nacos/releases)
 
+- [erlang 下载 官网 ](https://www.erlang.org/downloads)
+
 - [rabbitmq 下载 github ](https://github.com/rabbitmq/rabbitmq-server/releases)
 
 
