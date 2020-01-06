@@ -42,6 +42,8 @@ Eshell V10.5  (abort with ^G)
      
      打开浏览器登录：http://127.0.0.1:15672 
 ```
+
+默认用户guest/guest
    
 
 
