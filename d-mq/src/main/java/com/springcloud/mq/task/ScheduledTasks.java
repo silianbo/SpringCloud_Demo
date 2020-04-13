@@ -13,6 +13,7 @@ import static com.springcloud.mq.constant.RabbitCons.Routingkey.*;
 
 /**
  * @author bo
+ * 调度器设置
  */
 @Component
 @EnableScheduling

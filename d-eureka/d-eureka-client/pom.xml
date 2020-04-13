@@ -13,6 +13,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>d-eureka-client</name>
 
+    <description>eureka服务注册 客户端demo</description>
+
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.M3</spring-cloud.version>
